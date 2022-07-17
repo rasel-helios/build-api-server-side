@@ -1,0 +1,220 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "A simple Express Build Api",
+    "version": "1.0.0",
+    "title": "Build APi",
+    "service": "",
+    "contact": {
+      "email": "raselhosaintro@gmail.com"
+    }
+  },
+  "host": "localhost:5000",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Signup",
+      "description": "Everything about your Signup"
+    },
+    {
+      "name": "Login",
+      "description": "Everything about your Login"
+    },
+    {
+      "name": "UserData",
+      "description": "Everything User data Post, Get, Update, Delete"
+    }
+  ],
+  "schemes": ["https", "http"],
+  "paths": {
+    "/usersignup": {
+      "post": {
+        "tags": ["Signup"],
+        "summary": "User Sign Up",
+        "description": "This can only be done by the signup in user.",
+        "operationId": "createSignUp",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user Sign Up",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Signup"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "User singup successfuly "
+          }
+        }
+      }
+    },
+    "/loginUser": {
+      "post": {
+        "tags": ["Login"],
+        "summary": "user login",
+        "description": "This can only be done by the logged in user.",
+        "operationId": "createLogin",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User Login  object",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Login"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "User login  successful "
+          }
+        }
+      }
+    },
+    "/api/user": {
+      "post": {
+        "tags": ["UserData"],
+        "summary": "Create user new data",
+        "operationId": "createNewUserData",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User post  object data",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Userpost"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "User data stored successfully"
+          }
+        }
+      }
+    },
+    "/api/user/{email}": {
+      "get": {
+        "tags": ["UserData"],
+        "summary": "Get user data",
+        "operationId": "getUserData",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "email",
+            "description": "The user email",
+            "required": true
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "User data get successfully"
+          }
+        }
+      }
+    },
+    "/api/user/{id}": {
+      "patch": {
+        "tags": ["UserData"],
+        "summary": "One User Update",
+        "operationId": "oneUserUpdate",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The user id",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Created user Record",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/Userpost"
+            }
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "User data update successfully"
+          }
+        }
+      }
+    },
+    "/api/user/{id} ": {
+      "delete": {
+        "tags": ["UserData"],
+        "summary": "One user delete",
+        "operationId": "oneUserDelete",
+        "produces": ["application/json"],
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "The user delete id",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "default": {
+            "description": "User data delete successfully"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "Signup": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Userpost": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string"
+        },
+        "phone": {
+          "type": "string"
+        },
+        "email": {
+          "type": "string"
+        },
+        "image": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

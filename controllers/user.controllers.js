@@ -1,5 +1,4 @@
 const User = require("../models/user.model");
-const cloudinary = require("../utils/cloudinary");
 
 const getAllUserData = async (req, res) => {
   try {
@@ -14,22 +13,14 @@ const getAllUserData = async (req, res) => {
 const createUserData = async (req, res) => {
   const { name, phone, email, image } = req.body;
   try {
-    if (image) {
-      const uploadImage = await cloudinary.uploader.upload(image, {
-        upload_preset: "Build-Api",
-      });
-
-      if (uploadImage) {
-        const newUser = new User({
-          name: name,
-          phone: phone,
-          email: email,
-          image: uploadImage,
-        });
-        await newUser.save();
-        res.status(200).json(newUser);
-      }
-    }
+    const newUser = new User({
+      name: name,
+      phone: phone,
+      email: email,
+      image: image,
+    });
+    await newUser.save();
+    res.status(200).json(newUser);
   } catch (error) {
     res.status(500).send(error.message);
   }
