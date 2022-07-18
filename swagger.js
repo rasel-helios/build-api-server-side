@@ -2,6 +2,7 @@ const swaggerAutogen = require("swagger-autogen")();
 
 const doc = {
   info: {
+    swagger: "2.0",
     version: "1.0.0",
     title: "Build Api Documentation",
     description:
