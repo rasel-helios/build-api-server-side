@@ -22,23 +22,31 @@ const doc = {
   securityDefinitions: {
     apiKeyAuth: {
       type: "apiKey",
-      in: "header", // can be "header", "query" or "cookie"
-      name: "X-API-KEY", // name of the header, query parameter or cookie
-      description: "any description...",
+      in: "header",
+      name: "X-API-KEY",
+      description: "any description",
     },
   },
   definitions: {
+    Signup: {
+      email: { type: "string", unique: true, required: true },
+      password: { type: "string", required: true },
+    },
+    Login: {
+      email: { type: "string", required: true },
+      password: { type: "string", required: true },
+    },
     User: {
-      name: "string",
-      phone: "string",
-      email: "string",
-      image: "string",
+      name: { type: "string", required: true },
+      phone: { type: "string", required: true },
+      email: { type: "string", required: true },
+      image: { type: "string", required: true },
     },
     AddUser: {
-      name: "string",
-      phone: "string",
-      email: "string",
-      image: "string",
+      name: { type: "string", required: true },
+      phone: { type: "string", required: true },
+      email: { type: "string", required: true },
+      image: { type: "string", required: true },
     },
   },
 };
