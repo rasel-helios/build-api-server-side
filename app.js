@@ -1,7 +1,8 @@
 const express = require("express");
 const cors = require("cors");
 const swaggerUI = require("swagger-ui-express");
-const swaggerDocument = require("./swagger.json");
+const swaggerJsDoc = require("swagger-jsdoc");
+const swaggerDocument = require("./swagger-outputfile.json");
 const userRouter = require("./routes/users.route");
 const singupRouter = require("./routes/signup.route");
 const loginUser = require("./routes/login.route");
@@ -9,7 +10,6 @@ const resetPassword = require("./routes/passwordreset.route");
 
 require("./config/db");
 const app = express();
-
 app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());

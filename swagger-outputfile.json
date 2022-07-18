@@ -9,7 +9,7 @@
   "basePath": "/",
   "tags": [
     {
-      "name": "userData",
+      "name": "User",
       "description": "User data post, get, update , delete"
     }
   ],
@@ -286,65 +286,24 @@
     }
   },
   "definitions": {
-    "Parents": {
-      "type": "object",
-      "properties": {
-        "father": {
-          "type": "string",
-          "example": "Simon Doe"
-        },
-        "mother": {
-          "type": "string",
-          "example": "Marie Doe"
-        }
-      }
-    },
     "User": {
       "type": "object",
       "properties": {
         "name": {
           "type": "string",
-          "example": "Jhon Doe"
+          "example": "string"
         },
-        "age": {
-          "type": "number",
-          "example": 29
+        "phone": {
+          "type": "string",
+          "example": "string"
         },
-        "parents": {
-          "$ref": "#/definitions/Parents"
+        "email": {
+          "type": "string",
+          "example": "string"
         },
-        "diplomas": {
-          "type": "array",
-          "items": {
-            "type": "object",
-            "properties": {
-              "school": {
-                "type": "string",
-                "example": "XYZ University"
-              },
-              "year": {
-                "type": "number",
-                "example": 2020
-              },
-              "completed": {
-                "type": "boolean",
-                "example": true
-              },
-              "internship": {
-                "type": "object",
-                "properties": {
-                  "hours": {
-                    "type": "number",
-                    "example": 290
-                  },
-                  "location": {
-                    "type": "string",
-                    "example": "XYZ Company"
-                  }
-                }
-              }
-            }
-          }
+        "image": {
+          "type": "string",
+          "example": "string"
         }
       }
     },
@@ -353,21 +312,21 @@
       "properties": {
         "name": {
           "type": "string",
-          "example": "Jhon Doe"
+          "example": "string"
         },
-        "age": {
-          "type": "number",
-          "example": 29
-        },
-        "about": {
+        "phone": {
           "type": "string",
-          "example": ""
+          "example": "string"
+        },
+        "email": {
+          "type": "string",
+          "example": "string"
+        },
+        "image": {
+          "type": "string",
+          "example": "string"
         }
-      },
-      "required": [
-        "name",
-        "age"
-      ]
+      }
     }
   }
 }
