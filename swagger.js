@@ -2,7 +2,6 @@ const swaggerAutogen = require("swagger-autogen")();
 
 const doc = {
   info: {
-    swagger: "2.0",
     version: "1.0.0",
     title: "Build Api Documentation",
     description:
@@ -15,8 +14,16 @@ const doc = {
   produces: ["application/json"],
   tags: [
     {
-      name: "User",
+      name: "User authentication",
+      description: "User signup and login",
+    },
+    {
+      name: "User data",
       description: "User data post, get, update , delete",
+    },
+    {
+      name: "Reset password",
+      description: "Reset user password",
     },
   ],
   securityDefinitions: {

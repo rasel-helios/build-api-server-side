@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 
 const getAllUserData = async (req, res) => {
+  // #swagger.tags = ['User data']
   try {
     const userData = await User.find({ email: req.params.email });
 
@@ -11,7 +12,9 @@ const getAllUserData = async (req, res) => {
 };
 
 const createUserData = async (req, res) => {
+  // #swagger.tags = ['User data']
   const { name, phone, email, image } = req.body;
+
   try {
     const newUser = new User({
       name: name,
@@ -27,6 +30,7 @@ const createUserData = async (req, res) => {
 };
 
 const updateUserData = async (req, res) => {
+  // #swagger.tags = ['User data']
   try {
     const userUpdate = await User.findOne({ _id: req.params.id });
     userUpdate.name = req.body.name;
@@ -40,6 +44,7 @@ const updateUserData = async (req, res) => {
 };
 
 const deleteUserData = async (req, res) => {
+  // #swagger.tags = ['User data']
   try {
     const userData = await User.deleteOne({ _id: req.params.id });
     res.status(200).json(req.params.id);
