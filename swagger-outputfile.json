@@ -27,10 +27,10 @@
   ],
   "securityDefinitions": {
     "bearerAuth": {
-      "type": "jwt",
-      "in": "header",
       "name": "Authorization",
-      "description": "any description"
+      "in": "header",
+      "type": "apiKey",
+      "description": "JWT Authorization header"
     }
   },
   "consumes": [
@@ -498,5 +498,10 @@
         }
       }
     }
-  }
+  },
+  "security": [
+    {
+      "bearerAuth": []
+    }
+  ]
 }

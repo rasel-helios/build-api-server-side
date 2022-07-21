@@ -29,12 +29,13 @@ const doc = {
   securityDefinitions: {
     bearerAuth: {
       name: "Authorization",
-      type: "jwt",
       in: "header",
-
-      description: "any description",
+      type: "apiKey",
+      description: "JWT Authorization header",
     },
   },
+  security: [{ bearerAuth: [] }],
+
   definitions: {
     Signup: {
       email: { type: "string", unique: true, required: true },
