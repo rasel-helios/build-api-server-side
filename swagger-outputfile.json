@@ -26,10 +26,10 @@
     "https"
   ],
   "securityDefinitions": {
-    "apiKeyAuth": {
-      "type": "apiKey",
+    "bearerAuth": {
+      "type": "jwt",
       "in": "header",
-      "name": "X-API-KEY",
+      "name": "Authorization",
       "description": "any description"
     }
   },
@@ -276,6 +276,9 @@
     },
     "/resetPassword/{userId}/{token}": {
       "post": {
+        "tags": [
+          "Reset password"
+        ],
         "description": "",
         "parameters": [
           {

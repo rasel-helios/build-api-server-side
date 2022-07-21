@@ -27,10 +27,11 @@ const doc = {
     },
   ],
   securityDefinitions: {
-    apiKeyAuth: {
-      type: "apiKey",
+    bearerAuth: {
+      name: "Authorization",
+      type: "jwt",
       in: "header",
-      name: "X-API-KEY",
+
       description: "any description",
     },
   },

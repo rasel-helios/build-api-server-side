@@ -35,6 +35,7 @@ const PasswordReset = async (req, res) => {
 };
 
 const passwordResetConfirmation = async (req, res) => {
+  // #swagger.tags = ['Reset password']
   try {
     const schema = Joi.object({ password: Joi.string().required() });
     const { error } = schema.validate(req.body);
