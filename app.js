@@ -24,11 +24,12 @@ app.use(
   passport.authenticate("jwt", { session: false }),
   userRouter
 );
-app.use("/usersignup", singupRouter);
-app.use("/loginUser", loginUser);
-app.use("/resetPassword", resetPassword);
+app.use("/user-signup", singupRouter);
+app.use("/login-user", loginUser);
+app.use("/reset-password", resetPassword);
 //get server home page
 app.get("/", (req, res) => {
+  // #swagger.ignore = true
   res.sendFile(__dirname + "/./views/index.html");
 });
 

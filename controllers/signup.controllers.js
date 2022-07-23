@@ -3,9 +3,15 @@ const Signup = require("../models/signup.model");
 const sendEmail = require("../utils/sendMail");
 const bcrypt = require("bcrypt");
 const saltRounds = 10;
-
+const jwt = require("jsonwebtoken");
+const config = require("../config/config");
 const createSignup = async (req, res) => {
   // #swagger.tags = ['User authentication']
+  /*    #swagger.parameters['obj'] = {
+                in: 'body',
+                description: 'User Signup.',
+                schema: { $ref: '#/definitions/Signup' }
+        } */
   const { email, password } = req.body;
   const subject = "Signup  email confirmation";
   const text =
@@ -18,7 +24,19 @@ const createSignup = async (req, res) => {
       });
       await newSignup.save();
       sendEmail(newSignup.email, subject, text);
-      res.status(200).json({ singup: true });
+      const payload = {
+        id: newSignup._id,
+        email: newSignup.email,
+      };
+      const token = jwt.sign(payload, config.secret_jwt.secret_key, {
+        expiresIn: "1d",
+      });
+      res
+        .status(200)
+        .json({
+          message: "User signup successfully saved",
+          token: `Bearer ${token}`,
+        });
     });
   } catch (error) {
     res.status(500).send(error.message);
